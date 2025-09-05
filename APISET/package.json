@@ -1,12 +1,16 @@
 {
   "name": "apiset",
   "version": "1.0.0",
-  "description": "",
+  "description": "Perfeito — vou destrinchar **arquivo por arquivo** e explicar, em linguagem clara (e com a paciência de um bot que já viu código pior), o que cada função/método faz, quais são os riscos/efeitos colaterais e sugestões práticas de melhoria. Vou citar pedaços importantes do comportamento para você entender o fluxo completo entre front e back.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }

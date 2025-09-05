@@ -1,18 +1,20 @@
+// Guarda as referências do form e do container
 // Get references to the form and the list container
 const form = document.getElementById("alunoForm");
 const lista = document.getElementById("listaAlunos");
 
-// Save the students array to localStorage as a JSON string
+// Guarda a array dos estudantes em uma string JSON
 function salvarLocalStorage(alunos) {
   localStorage.setItem("alunos", JSON.stringify(alunos));
 }
 
-// Load the students array from localStorage, or return empty array if none
+// Guarda a array dos estudantes no localstorage
+// Ou retorna uma array vazia
 function carregarLocalStorage() {
   return JSON.parse(localStorage.getItem("alunos")) || [];
 }
 
-// Render the list of students in the UI
+// Renderizar lista dos estudantes
 function renderAlunos() {
   lista.innerHTML = "";
   const alunos = carregarLocalStorage();
@@ -20,7 +22,7 @@ function renderAlunos() {
     const li = document.createElement("li");
     li.textContent = `${aluno.nome} - ${aluno.email}`;
 
-    // Create Edit button
+    // Criar botão de edição
     const editBtn = document.createElement("button");
     editBtn.textContent = "Editar";
     editBtn.onclick = () => {
@@ -31,12 +33,12 @@ function renderAlunos() {
       document.getElementById("email").value = aluno.email;
       document.getElementById("matricula").value = aluno.matricula;
       document.getElementById("escola").value = aluno.escola;
-      // Store the index of the student being edited in a hidden field or variable
+      // Guarda o index do estudante sendo editado
       form.dataset.editIndex = index;
     };
     li.appendChild(editBtn);
 
-    // Create Delete button
+    // Botão para deletar
     const btn = document.createElement("button");
     btn.textContent = "Excluir";
     btn.onclick = () => {
@@ -65,11 +67,11 @@ form.addEventListener("submit", async (e) => {
   const alunos = carregarLocalStorage();
 
   if (form.dataset.editIndex !== undefined) {
-    // Edit existing student
+    // Editar estudante
     const index = parseInt(form.dataset.editIndex);
     alunos[index] = aluno;
 
-    // API - update student (assuming API supports PUT with id)
+    // Atualizar o estudante
     await fetch(`/api/alunos/${index + 1}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -78,9 +80,8 @@ form.addEventListener("submit", async (e) => {
 
     delete form.dataset.editIndex;
   } else {
-    // Add new student
 
-    // API - add student
+    // Adicionar estudante
     await fetch("/api/alunos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

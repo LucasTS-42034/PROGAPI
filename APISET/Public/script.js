@@ -1,5 +1,4 @@
-// Guarda as referências do form e do container
-// Get references to the form and the list container
+// Guarda as referências do form e do container da lista
 const form = document.getElementById("alunoForm");
 const lista = document.getElementById("listaAlunos");
 
@@ -26,7 +25,7 @@ function renderAlunos() {
     const editBtn = document.createElement("button");
     editBtn.textContent = "Editar";
     editBtn.onclick = () => {
-      // Populate form fields with selected student data for editing
+      // Coloca os dados do aluno no form para editar
       document.getElementById("nome").value = aluno.nome;
       document.getElementById("cpf").value = aluno.cpf;
       document.getElementById("telefone").value = aluno.telefone;
@@ -52,7 +51,7 @@ function renderAlunos() {
   });
 }
 
-// Handle form submission for adding or editing a student
+// Submissão do form para adicionar ou editar o estudante
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const aluno = {

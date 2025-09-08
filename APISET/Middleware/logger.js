@@ -1,4 +1,4 @@
-// Middleware para cada requisição HTTP recebida
+// Middleware cada requisição HTTP recebida
 /**
  * Middleware que registra no console o método HTTP e a URL de cada requisição
  * @param {Object} req - Objeto da requisição HTTP
@@ -10,5 +10,5 @@ function logger(req, res, next) {
   next();
 }
 
-// Exporta o middleware para ser usado em outras partes da aplicação
+// Exporta o middleware para outras partes
 module.exports = logger;

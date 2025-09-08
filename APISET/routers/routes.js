@@ -5,22 +5,14 @@ const router = express.Router();
 // Importa os dados iniciais dos alunos (simulando um banco de dados em memória)
 let alunos = require("../dados/sampleDados.js");
 
-// READ - listar todos os alunos
-/**
- * GET /alunos
- * Retorna a lista completa de alunos em formato JSON.
- */
+
+// Retorna a lista completa de alunos em formato JSON.
 router.get("/alunos", (req, res) => {
   res.json(alunos);
 });
 
-// CREATE - adicionar um novo aluno
-/**
- * POST /alunos
- * Recebe os dados do aluno no corpo da requisição e adiciona à lista.
- * Retorna o aluno criado com status 201.
- */
-router.post("/alunos", (req, res) => {
+//adiciona um novo aluno
+ router.post("/alunos", (req, res) => {
   const { nome, cpf, telefone, email, matricula, escola } = req.body;
   const novoAluno = {
     id: alunos.length + 1,
@@ -35,12 +27,8 @@ router.post("/alunos", (req, res) => {
   res.status(201).json(novoAluno);
 });
 
-// UPDATE - editar um aluno existente
-/**
- * PUT /alunos/:id
- * Atualiza os dados do aluno com o ID especificado.
- * Retorna o aluno atualizado ou erro 404 se não encontrado.
- */
+// Edita um aluno existente
+// Atualiza os dados do aluno com o ID especificado.
 router.put("/alunos/:id", (req, res) => {
   const { id } = req.params;
   const { nome, cpf, telefone, email, matricula, escola } = req.body;
@@ -58,12 +46,7 @@ router.put("/alunos/:id", (req, res) => {
   res.json(aluno);
 });
 
-// DELETE - remover um aluno
-/**
- * DELETE /alunos/:id
- * Remove o aluno com o ID especificado da lista.
- * Retorna mensagem de sucesso.
- */
+// remover um aluno
 router.delete("/alunos/:id", (req, res) => {
   const { id } = req.params;
   alunos = alunos.filter(a => a.id != id);

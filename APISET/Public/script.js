@@ -13,7 +13,7 @@ function carregarLocalStorage() {
   return JSON.parse(localStorage.getItem("alunos")) || [];
 }
 
-// Renderizar lista dos estudantes
+// Renderiza a lista dos estudantes
 function renderAlunos() {
   lista.innerHTML = "";
   const alunos = carregarLocalStorage();
@@ -21,7 +21,7 @@ function renderAlunos() {
     const li = document.createElement("li");
     li.textContent = `${aluno.nome} - ${aluno.email}`;
 
-    // Criar botão de edição
+    // Cria botão de edição
     const editBtn = document.createElement("button");
     editBtn.textContent = "Editar";
     editBtn.onclick = () => {
